@@ -1,0 +1,15 @@
+Bootstrap: docker
+From: pytorchlightning/pytorch_lightning:base-cuda-py3.9-torch1.10
+
+%post 
+    apt-get update
+    apt-get install -y libblosc1
+    pip install --upgrade pip
+    pip install tqdm
+    pip install jupyterlab
+    pip install scikit-image
+    pip install matplotlib
+    pip install scipy
+
+%runscript
+    exec python "$@"
